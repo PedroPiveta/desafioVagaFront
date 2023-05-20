@@ -1,4 +1,3 @@
-import useFetchGet from '../hooks/useFetchGet';
 import axios from 'axios';
 import { useState } from "react";
 

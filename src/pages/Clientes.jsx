@@ -14,7 +14,7 @@ const Clientes = () => {
         <Dialog.Portal>
           <Dialog.Overlay className='dialog-overlay' />
           <Dialog.Content className='dialog-content'>
-            <Dialog.Title className='dialog-title'>Criar novo cliente</Dialog.Title>
+            <Dialog.Title className='dialog-title'>Cadastrar novo cliente</Dialog.Title>
               <CreateCliente />
           </Dialog.Content>
         </Dialog.Portal>
@@ -22,10 +22,9 @@ const Clientes = () => {
       {
         data ? data.reverse().map((cliente, index) => (
           <div key={index}>
-            <div>id: {cliente.id}</div>
+            <div>nome: {cliente.nome}</div>
             <div>numero documento: {cliente.numeroDocumento}</div>
             <div>tipo documento: {cliente.tipoDocumento}</div>
-            <div>nome: {cliente.nome}</div>
             <div>logradouro: {cliente.logradouro}</div>
             <div>numero: {cliente.numero}</div>
             <div>bairro: {cliente.bairro}</div>
