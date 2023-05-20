@@ -6,7 +6,7 @@ const Condutores = () => {
     return (
         <>
             {
-                data ? data.map((condutor, index) => (
+                data ? data.reverse().map((condutor, index) => (
                     <div key={index}>
                         <div>id: {condutor.id}</div>
                         <div>nome: {condutor.nome}</div>

@@ -7,7 +7,7 @@ const Deslocamentos = () => {
         <>
             
             {
-                data ? data.map((deslocamento, index) => (
+                data ? data.reverse().map((deslocamento, index) => (
                     <div key={index}>
                         <div>id: {deslocamento.id}</div>
                     </div>

@@ -20,7 +20,7 @@ const Clientes = () => {
         </Dialog.Portal>
       </Dialog.Root>
       {
-        data ? data.map((cliente, index) => (
+        data ? data.reverse().map((cliente, index) => (
           <div key={index}>
             <div>id: {cliente.id}</div>
             <div>numero documento: {cliente.numeroDocumento}</div>
