@@ -1,0 +1,53 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.tabs-root {
+  /* background-color: red; */
+}
+
+.tabs-list {
+  /* background-color: blue; */
+  height: 25px;
+  width: 100%;
+  position: sticky;
+  top: 0;
+}
+
+.tabs-trigger {
+  /* background-color: green; */
+}
+
+.dialog-overlay {
+  position: fixed;
+  background-color: rgba(0,0,0, 0.5);
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.dialog-content {
+  position: absolute;
+  margin-left: 5px;
+  top: 10%;
+  left: 50%;
+  width: 100%;
+  padding: 2.5em;
+  border-radius: 2em;
+  translate: -50%;
+  background-color: #fafafa;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
