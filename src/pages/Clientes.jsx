@@ -6,9 +6,9 @@ const Clientes = () => {
   const { data, error } = useFetchGet('https://api-deslocamento.herokuapp.com/api/v1/Cliente');
 
   return (
-    <>
+    <main>
       <Dialog.Root>
-        <Dialog.Trigger asChild>
+        <Dialog.Trigger className='dialog-trigger' asChild>
           <button>Cadastrar novo cliente</button>
         </Dialog.Trigger>
         <Dialog.Portal>
@@ -21,7 +21,7 @@ const Clientes = () => {
       </Dialog.Root>
       {
         data ? data.reverse().map((cliente, index) => (
-          <div key={index}>
+          <div className='card' key={index}>
             <div>nome: {cliente.nome}</div>
             <div>numero documento: {cliente.numeroDocumento}</div>
             <div>tipo documento: {cliente.tipoDocumento}</div>
@@ -35,7 +35,7 @@ const Clientes = () => {
           <div>Carregando...</div>
         )
       }
-    </>
+    </main>
   );
 }
 

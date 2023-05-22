@@ -31,9 +31,9 @@ const Condutores = () => {
     }, [data]);
 
     return (
-        <>
+        <main>
             <Dialog.Root>
-                <Dialog.Trigger asChild>
+                <Dialog.Trigger className="dialog-trigger" asChild>
                     <button>Cadastrar novo condutor</button>
                 </Dialog.Trigger>
                 <Dialog.Portal>
@@ -46,7 +46,7 @@ const Condutores = () => {
             </Dialog.Root>
             {
                 formattedData ? formattedData.map((condutor, index) => (
-                    <div key={index}>
+                    <div className='card' key={index}>
                         <div>nome: {condutor.nome}</div>
                         <div>numero habilitacao: {condutor.numeroHabilitacao}</div>
                         <div>categoria habilitacao: {condutor.catergoriaHabilitacao}</div>
@@ -56,7 +56,7 @@ const Condutores = () => {
                     <div>Carregando...</div>
                 )
             }
-        </>
+        </main>
     );
 }
 

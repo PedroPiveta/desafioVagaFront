@@ -11,20 +11,29 @@ body {
   padding: 0;
 }
 
-.tabs-root {
-  /* background-color: red; */
+#root {
+  display: flex;
 }
 
-.tabs-list {
-  /* background-color: blue; */
-  height: 25px;
-  width: 100%;
-  position: sticky;
-  top: 0;
+aside {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  min-height: 100vh;
 }
 
-.tabs-trigger {
-  /* background-color: green; */
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  list-style: none;
+}
+
+.dialog-trigger {
+  margin: 1.1em;
+  padding: 1.1em;
 }
 
 .dialog-overlay {
@@ -50,4 +59,10 @@ body {
 form {
   display: flex;
   flex-direction: column;
+}
+
+.card {
+  font-size: 16px;
+  padding: 1.5em;
+  margin: 1.1em;
 }
