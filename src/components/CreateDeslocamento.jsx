@@ -27,7 +27,7 @@ const CreateDeslocamento = () => {
             idCliente,
         }
         await axios.post('https://api-deslocamento.herokuapp.com/api/v1/Deslocamento/IniciarDeslocamento', deslocamento);
-        window.location.href = '/deslocamentos';
+        window.location.reload()
     }
     return (
         <>

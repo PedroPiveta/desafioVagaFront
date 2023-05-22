@@ -24,7 +24,7 @@ const CreateCliente = () => {
             uf,
         }
         await axios.post('https://api-deslocamento.herokuapp.com/api/v1/Cliente', cliente);
-        window.location.href = '/clientes';
+        window.location.reload()
     }
     return (
         <>

@@ -16,8 +16,7 @@ const CreateCondutor = () => {
             vencimentoHabilitacao,
         }
         await axios.post('https://api-deslocamento.herokuapp.com/api/v1/Condutor', condutor);
-        window.location.href = '/condutores';
-        console.log(condutor);
+        window.location.reload()
     }
     return (
         <>

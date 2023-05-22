@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
+import { redirect } from "react-router-dom";
 
 const CreateVeiculo = () => {
+
     const [placa, setPlaca] = useState('');
     const [marcaModelo, setMarcaModelo] = useState('');
     const [anoFabricacao, setAnoFabricacao] = useState(0);
@@ -16,7 +18,7 @@ const CreateVeiculo = () => {
             kmAtual,
         }
         await axios.post('https://api-deslocamento.herokuapp.com/api/v1/Veiculo', veiculo);
-        window.location.href = '/veiculos';
+        window.location.reload()
     }
     return (
         <>
