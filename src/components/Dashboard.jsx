@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
+import { UserCircle, Truck, Package, Person } from "phosphor-react";
 
 const DashBoard = () => {
     const location = useLocation();
@@ -11,10 +12,22 @@ const DashBoard = () => {
     return ( 
         <aside>
             <ul>
-                <li onClick={() => navigate('/clientes')}>Clientes</li>
-                <li onClick={() => navigate('/condutores')}>Condutores</li>
-                <li onClick={() => navigate('/veiculos')}>Veiculos</li>
-                <li onClick={() => navigate('/deslocamentos')}>Deslocamentos</li>
+                <div className="dashboard-item">
+                    <UserCircle size={48} color="#252525" />
+                    <li onClick={() => navigate('/clientes')}>Clientes</li>
+                </div>
+                <div className="dashboard-item">
+                    <Person size={48} color="#252525" />
+                    <li onClick={() => navigate('/condutores')}>Condutores</li>
+                </div>
+                <div className="dashboard-item">
+                    <Truck size={48} color="#252525" />
+                    <li onClick={() => navigate('/veiculos')}>Veiculos</li>
+                </div>
+                <div className="dashboard-item">
+                    <Package size={48} color="#252525" />
+                    <li onClick={() => navigate('/deslocamentos')}>Deslocamentos</li>
+                </div>
             </ul>
         </aside>
      );

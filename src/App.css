@@ -18,9 +18,12 @@ body {
 aside {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  font-size: 16px;
   box-shadow: 2px 2px 2px rgba(0,0,0, 0.5);
+  padding: 1.1em;
   margin: 0 1.1em;
-  width: 25%;
+  max-width: 25%;
   min-height: 100vh;
 }
 
@@ -33,9 +36,36 @@ ul li {
   list-style: none;
 }
 
+.dashboard-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 1.1em;
+  margin-bottom: 5px;
+  gap: 12px;
+}
+
+.dashboard-item::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: red;
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+  transition: transform 250ms ease-in;
+}
+
+.dashboard-item:hover::after {
+  transform: scaleX(1);
+}
+
 main {
   width: 100%;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .dialog-trigger {
@@ -86,4 +116,28 @@ form {
   margin: 0;
   padding: 0;
   color: #252525;
+}
+
+@media (max-width: 600px) {
+  #root{
+    flex-direction: column;
+  }
+
+  main{
+    flex-direction: column;
+    margin-top: 250px;
+  }
+
+  aside {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 150px;
+    box-shadow: 0 0 0 ;
+    font-size: 12px;
+  }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
