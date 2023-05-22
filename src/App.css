@@ -43,8 +43,9 @@ ul li {
   align-items: center;
   cursor: pointer;
   margin-top: 1.1em;
+  margin-inline: 1.1em;
   margin-bottom: 5px;
-  gap: 12px;
+  gap: 16px;
 }
 
 .dashboard-item::after {
