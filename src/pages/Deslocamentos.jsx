@@ -1,9 +1,34 @@
 import CreateDeslocamento from "../components/CreateDeslocamento";
 import useFetchGet from "../hooks/useFetchGet";
+import { useState, useEffect } from "react";
 import * as Dialog from '@radix-ui/react-dialog';
 
 const Deslocamentos = () => {
     const { data, error } = useFetchGet('https://api-deslocamento.herokuapp.com/api/v1/Deslocamento');
+    const [formattedData, setFormattedData] = useState(null);
+
+    useEffect(() => {
+        if (data) {
+            const formattedDeslocamentos = data.reverse().map((deslocamento) => {
+                const inicioDeslocamento = new Date(deslocamento.inicioDeslocamento);
+
+                const options = {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                };
+
+                const formattedDate = new Intl.DateTimeFormat('pt-BR', options).format(inicioDeslocamento);
+
+                return {
+                    ...deslocamento,
+                    inicioDeslocamento: formattedDate,
+                };
+            });
+
+            setFormattedData(formattedDeslocamentos);
+        }
+    }, [data]);
 
     return (
         <main>
@@ -20,9 +45,10 @@ const Deslocamentos = () => {
                 </Dialog.Portal>
             </Dialog.Root>
             {
-                data ? data.reverse().map((deslocamento, index) => (
+                formattedData ? formattedData.reverse().map((deslocamento, index) => (
                     <div className='card' key={index}>
-                        <div>id: {deslocamento.id}</div>
+                        <div>Km inicial: {deslocamento.kmInicial}</div>
+                        <div>Início do deslocamento: {deslocamento.inicioDeslocamento}</div>
                     </div>
                 )) : (
                     <div>Carregando...</div>
