@@ -12,21 +12,21 @@ const DashBoard = () => {
     return ( 
         <aside>
             <ul>
-                <div className="dashboard-item">
+                <div className="dashboard-item" onClick={() => navigate('/clientes')}>
                     <UserCircle size={48} color="#252525" />
-                    <li onClick={() => navigate('/clientes')}>Clientes</li>
+                    <li>Clientes</li>
                 </div>
-                <div className="dashboard-item">
+                <div className="dashboard-item" onClick={() => navigate('/condutores')}>
                     <Person size={48} color="#252525" />
-                    <li onClick={() => navigate('/condutores')}>Condutores</li>
+                    <li>Condutores</li>
                 </div>
-                <div className="dashboard-item">
+                <div className="dashboard-item" onClick={() => navigate('/veiculos')}>
                     <Truck size={48} color="#252525" />
-                    <li onClick={() => navigate('/veiculos')}>Veiculos</li>
+                    <li>Veiculos</li>
                 </div>
-                <div className="dashboard-item">
+                <div className="dashboard-item" onClick={() => navigate('/deslocamentos')}>
                     <Package size={48} color="#252525" />
-                    <li onClick={() => navigate('/deslocamentos')}>Deslocamentos</li>
+                    <li>Deslocamentos</li>
                 </div>
             </ul>
         </aside>
