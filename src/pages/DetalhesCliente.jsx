@@ -16,13 +16,19 @@ const DetalhesCliente = () => {
 
     const handleDelete = async () => {
         if (data) {
-            console.log(cliente)
-            await axios.delete(`https://api-deslocamento.herokuapp.com/api/v1/Cliente/${id}`,  {headers: {
-                'Content-Type': 'application/json',
-            }, data:cliente,});
-            alert('Cliente excluído com sucesso!');
-            window.location.href = '/clientes';
+            try {
+                await axios.delete(`https://api-deslocamento.herokuapp.com/api/v1/Cliente/${id}`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }, data: cliente,
+                });
+                alert('Cliente excluído com sucesso!');
+                window.location.href = '/clientes';
+            } catch {
+                alert('Não foi possível excluir o cliente!');
+            }
         }
+
     };
 
     return (
