@@ -5,6 +5,7 @@ import Condutores from './pages/Condutores';
 import Deslocamentos from './pages/Deslocamentos';
 import DashBoard from './components/Dashboard';
 import Veiculos from './pages/Veiculos';
+import DetalhesCliente from './pages/DetalhesCliente';
 
 function App() {
   
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Clientes />} />
           <Route path='/clientes' element={<Clientes />} />
+          <Route path='/clientes/:id' element={<DetalhesCliente />} />
           <Route path='/condutores' element={<Condutores />} />
           <Route path='/deslocamentos' element={<Deslocamentos />} />
           <Route path='/veiculos' element={<Veiculos />} />

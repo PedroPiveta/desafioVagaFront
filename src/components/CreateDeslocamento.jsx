@@ -10,7 +10,7 @@ const CreateDeslocamento = () => {
     const [checkList, setCheckList] = useState('');
     const [motivo, setMotivo] = useState('');
     const [observacao, setObservacao] = useState('');
-    const [idCondutor, setIdCondutor] = useState(0);
+    const [idCondutor, setIdCondutor] = useState(0);      
     const [idVeiculo, setIdVeiculo] = useState(0);
     const [idCliente, setIdCliente] = useState(0);
 

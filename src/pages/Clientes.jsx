@@ -1,4 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog';
+import { PencilSimple } from 'phosphor-react';
+import { Link } from 'react-router-dom';
 import useFetchGet from '../hooks/useFetchGet';
 import CreateCliente from '../components/CreateCliente';
 
@@ -15,26 +17,25 @@ const Clientes = () => {
           <Dialog.Overlay className='dialog-overlay' />
           <Dialog.Content className='dialog-content'>
             <Dialog.Title className='dialog-title'>Cadastrar novo cliente</Dialog.Title>
-              <CreateCliente />
+            <CreateCliente />
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>
       {
         data ? data.reverse().map((cliente, index) => (
-          <div className='card' key={index}>
-            <div>nome: {cliente.nome}</div>
-            <div>numero documento: {cliente.numeroDocumento}</div>
-            <div>tipo documento: {cliente.tipoDocumento}</div>
-            <div>logradouro: {cliente.logradouro}</div>
-            <div>numero: {cliente.numero}</div>
-            <div>bairro: {cliente.bairro}</div>
-            <div>cidade: {cliente.cidade}</div>
-            <div>uf: {cliente.uf}</div>
+          <div key={index}>
+            <Link className='link' to={`/clientes/${cliente.id}`}   >
+              <div className='card' key={index}>
+                <div className='card-title'>nome: {cliente.nome}</div>
+                <PencilSimple size={24} color='#252525' />
+              </div>
+            </Link>
           </div>
         )) : (
           <div>Carregando...</div>
         )
       }
+
     </main>
   );
 }
