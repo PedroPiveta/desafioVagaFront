@@ -6,6 +6,7 @@ import Deslocamentos from './pages/Deslocamentos';
 import DashBoard from './components/Dashboard';
 import Veiculos from './pages/Veiculos';
 import DetalhesCliente from './pages/DetalhesCliente';
+import NotFound from './pages/NotFound';
 
 function App() {
   
@@ -20,6 +21,7 @@ function App() {
           <Route path='/condutores' element={<Condutores />} />
           <Route path='/deslocamentos' element={<Deslocamentos />} />
           <Route path='/veiculos' element={<Veiculos />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </Router>
     </>

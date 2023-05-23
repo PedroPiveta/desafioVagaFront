@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap');
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+  font-family: 'Cabin', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 
@@ -119,6 +123,14 @@ form {
   margin: 0;
   padding: 0;
   color: #252525;
+}
+
+.not-found h2 {
+  color: darkblue;
+}
+
+.not-found a {
+  text-decoration: none;
 }
 
 @media (max-width: 600px) {
