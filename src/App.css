@@ -78,6 +78,7 @@ ul li {
   transform: scaleX(1);
 }
 
+
 #focus::before {
   content: '';
   position: absolute;
@@ -87,7 +88,9 @@ ul li {
   filter: drop-shadow(5px 0 5px var(--shadow-color));
   bottom: 0;
   left: 0;
+  transition: all 250ms ease-in;
 }
+
 
 main {
   width: 100%;
