@@ -2,7 +2,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useFetchGet from "../hooks/useFetchGet";
-import EditCliente from "../components/EditCliente";
+import EditCondutor from "../components/EditCondutor";
 import axios from "axios";
 
 const DeatlhesCondutor = () => {
@@ -72,7 +72,7 @@ const DeatlhesCondutor = () => {
                         <Dialog.Title className="dialog-title">
                             Editar dados do condutor
                         </Dialog.Title>
-                        <EditCliente />
+                        <EditCondutor />
                     </Dialog.Content>
                 </Dialog.Portal>
             </Dialog.Root>

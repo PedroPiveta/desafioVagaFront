@@ -15,12 +15,17 @@ const CreateCondutor = () => {
             categoriaHabilitacao,
             vencimentoHabilitacao,
         }
-        await axios.post('https://api-deslocamento.herokuapp.com/api/v1/Condutor', condutor);
-        window.location.reload()
+        try {
+            await axios.post('https://api-deslocamento.herokuapp.com/api/v1/Condutor', condutor);
+            window.location.reload()
+        } catch (error) {
+            alert("Erro ao criar condutor");
+        }
+
     }
     return (
         <>
-           <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <label htmlFor="nome">Nome do Condutor</label>
                 <input type="text" name="nome" id="nome" onChange={(e) => setNome(e.target.value)} required />
                 <label htmlFor="numeroDoc">Número da habilitação</label>
@@ -30,7 +35,7 @@ const CreateCondutor = () => {
                 <label htmlFor="vencimentoHabilitacao">Vencimento da habilitação</label>
                 <input type="date" name="vencimentoHabilitacao" id="vencimentoHabilitacao" onChange={(e) => setVencimentoHabilitacao(e.target.value)} required />
                 <input type="submit" value="Cadastrar condutor" />
-              </form>
+            </form>
         </>
     );
 }
