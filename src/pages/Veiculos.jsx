@@ -3,7 +3,7 @@ import CreateVeiculo from "../components/CreateVeiculo";
 import * as Dialog from '@radix-ui/react-dialog';
 
 const Veiculos = () => {
-    const { data, error } = useFetchGet('https://api-deslocamento.herokuapp.com/api/v1/Veiculo');
+    const { data, error, isPending } = useFetchGet('https://api-deslocamento.herokuapp.com/api/v1/Veiculo');
 
     return (
         <main>
@@ -19,16 +19,14 @@ const Veiculos = () => {
                     </Dialog.Content>
                 </Dialog.Portal>
             </Dialog.Root>
-            {
-                data ? data.reverse().map((veiculo, index) => (
-                    <div className='card' key={index}>
-                        <div>Placa: {veiculo.placa}</div>
-                        <div>Marca: {veiculo.marcaModelo}</div>
-                        <div>Ano Fabricação: {veiculo.anoFabricacao}</div>
-                        <div>Quilometragem do veículo: {veiculo.kmAtual}</div>
-                    </div>
-                )) : (<div>Carregando...</div>)
-            }
+            
+            {isPending && <div>Carregando...</div>}
+            {error && <div>{error}</div>}
+            {data && data.map((veiculo, index) => (
+                <div className='card' key={index}>
+                    <div>Marca: {veiculo.marcaModelo}</div>
+                </div>
+            ))}
         </main>
     );
 }

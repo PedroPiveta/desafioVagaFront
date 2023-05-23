@@ -29,7 +29,7 @@ const CreateCondutor = () => {
                 <input type="text" name="tipoDoc" id="tipoDoc" onChange={(e) => setTipoDocumento(e.target.value)} required />
                 <label htmlFor="vencimentoHabilitacao">Vencimento da habilitação</label>
                 <input type="date" name="vencimentoHabilitacao" id="vencimentoHabilitacao" onChange={(e) => setVencimentoHabilitacao(e.target.value)} required />
-                <input type="submit" value="Cadastrar cliente" />
+                <input type="submit" value="Cadastrar condutor" />
               </form>
         </>
     );

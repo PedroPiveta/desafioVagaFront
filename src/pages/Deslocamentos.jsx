@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import * as Dialog from '@radix-ui/react-dialog';
 
 const Deslocamentos = () => {
-    const { data, error } = useFetchGet('https://api-deslocamento.herokuapp.com/api/v1/Deslocamento');
+    const { data, error, isPending } = useFetchGet('https://api-deslocamento.herokuapp.com/api/v1/Deslocamento');
     const [formattedData, setFormattedData] = useState(null);
 
     useEffect(() => {
@@ -44,16 +44,15 @@ const Deslocamentos = () => {
                     </Dialog.Content>
                 </Dialog.Portal>
             </Dialog.Root>
-            {
-                formattedData ? formattedData.reverse().map((deslocamento, index) => (
-                    <div className='card' key={index}>
-                        <div>Km inicial: {deslocamento.kmInicial}</div>
-                        <div>Início do deslocamento: {deslocamento.inicioDeslocamento}</div>
-                    </div>
-                )) : (
-                    <div>Carregando...</div>
-                )
-            }
+            
+            {isPending && <div>Carregando...</div>}
+            {error && <div>{error}</div>}
+            {formattedData && formattedData.map((deslocamento, index) => (
+                <div className='card' key={index}>
+                    <div>Km inicial: {deslocamento.kmInicial}</div>
+                    <div>Início do deslocamento: {deslocamento.inicioDeslocamento}</div>
+                </div>
+            ))}
         </main>
     );
 }

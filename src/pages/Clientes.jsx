@@ -5,7 +5,7 @@ import useFetchGet from '../hooks/useFetchGet';
 import CreateCliente from '../components/CreateCliente';
 
 const Clientes = () => {
-  const { data, error } = useFetchGet('https://api-deslocamento.herokuapp.com/api/v1/Cliente');
+  const { data, error, isPending } = useFetchGet('https://api-deslocamento.herokuapp.com/api/v1/Cliente');
 
   return (
     <main>
@@ -21,20 +21,18 @@ const Clientes = () => {
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>
-      {
-        data ? data.reverse().map((cliente, index) => (
-          <div key={index}>
-            <Link className='link' to={`/clientes/${cliente.id}`}   >
-              <div className='card' key={index}>
-                <div className='card-title'>nome: {cliente.nome}</div>
-                <PencilSimple size={24} color='#252525' />
-              </div>
-            </Link>
-          </div>
-        )) : (
-          <div>Carregando...</div>
-        )
-      }
+      {isPending && <div>Carregando...</div>}
+      {error && <div>{error}</div>}
+      {data && data.map((cliente, index) => (
+        <div key={index}>
+          <Link className='link' to={`/clientes/${cliente.id}`}   >
+            <div className='card' key={index}>
+              <div className='card-title'>nome: {cliente.nome}</div> 
+              <PencilSimple size={24} color='#252525' />
+            </div>
+          </Link>
+        </div>
+      ))}
 
     </main>
   );

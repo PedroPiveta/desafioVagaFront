@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import useFetchGet from "../hooks/useFetchGet";
 
 const Condutores = () => {
-    const { data, error } = useFetchGet('https://api-deslocamento.herokuapp.com/api/v1/Condutor');
+    const { data, error, isPending } = useFetchGet('https://api-deslocamento.herokuapp.com/api/v1/Condutor');
     const [formattedData, setFormattedData] = useState(null);
 
     useEffect(() => {
@@ -44,18 +44,14 @@ const Condutores = () => {
                     </Dialog.Content>
                 </Dialog.Portal>
             </Dialog.Root>
-            {
-                formattedData ? formattedData.map((condutor, index) => (
-                    <div className='card' key={index}>
-                        <div>nome: {condutor.nome}</div>
-                        <div>numero habilitacao: {condutor.numeroHabilitacao}</div>
-                        <div>categoria habilitacao: {condutor.catergoriaHabilitacao}</div>
-                        <div>vencimento habilitacao: {condutor.vencimentoHabilitacao}</div>
-                    </div>
-                )) : (
-                    <div>Carregando...</div>
-                )
-            }
+            
+            { isPending && <div>Carregando...</div> }
+            { error && <div>{ error }</div> }
+            { formattedData && formattedData.map((condutor, index) => (
+                <div className='card' key={index}>
+                    <div>nome: {condutor.nome}</div>
+                </div>
+            ))}
         </main>
     );
 }

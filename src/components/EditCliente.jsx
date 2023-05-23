@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const EditCliente = () => {
     const { id } = useParams();
-    const { data, error } = useFetchGet(`https://api-deslocamento.herokuapp.com/api/v1/Cliente/${id}`);
+    const { data, error, isPending } = useFetchGet(`https://api-deslocamento.herokuapp.com/api/v1/Cliente/${id}`);
 
     const [numeroDocumento, setNumeroDocumento] = useState('');
     const [tipoDocumento, setTipoDocumento] = useState('');
@@ -21,8 +21,6 @@ const EditCliente = () => {
         e.preventDefault();
         const cliente = {
             id: data.id,
-            numeroDocumento,
-            tipoDocumento,
             nome,
             logradouro,
             numero,
@@ -39,10 +37,6 @@ const EditCliente = () => {
             <form onSubmit={handleSubmit}>
                 <label htmlFor="nome">Nome do Cliente</label>
                 <input type="text" name="nome" id="nome" placeholder={data.nome} onChange={(e) => setNome(e.target.value)} required />
-                <label htmlFor="numeroDoc">Número do documento</label>
-                <input type="text" name="numeroDoc" id="numeroDoc" placeholder={data.numeroDocumento} onChange={(e) => setNumeroDocumento(e.target.value)} required />
-                <label htmlFor="tipoDoc">Tipo do documento</label>
-                <input type="text" name="tipoDoc" id="tipoDoc" placeholder={data.tipoDocumento} onChange={(e) => setTipoDocumento(e.target.value)} required />
                 <label htmlFor="logradouro">Logradouro</label>
                 <input type="text" name="logradouro" id="logradouro" placeholder={data.logradouro} onChange={(e) => setLogradouro(e.target.value)} required />
                 <label htmlFor="numero">Número</label>
