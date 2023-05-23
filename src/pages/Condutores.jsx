@@ -1,6 +1,7 @@
 import CreateCondutor from "../components/CreateCondutor";
 import * as Dialog from '@radix-ui/react-dialog';
-import { Plus } from "phosphor-react";
+import { Link } from "react-router-dom";
+import { Plus, PencilSimple } from "phosphor-react";
 import { useState, useEffect } from "react";
 import useFetchGet from "../hooks/useFetchGet";
 
@@ -49,8 +50,13 @@ const Condutores = () => {
             { isPending && <div>Carregando...</div> }
             { error && <div>{ error }</div> }
             { formattedData && formattedData.map((condutor, index) => (
-                <div className='card' key={index}>
-                    <div>nome: {condutor.nome}</div>
+                <div key={index}>
+                    <Link className="link" to={`/condutores/${condutor.id}`}>
+                        <div className='card'>
+                            <div>nome: {condutor.nome}</div>
+                            <PencilSimple size={24} color='#ebf1f1' />
+                        </div>
+                    </Link>
                 </div>
             ))}
         </main>
