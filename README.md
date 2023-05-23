@@ -2,6 +2,6 @@
 
 ## Tecnologias utilizadas
 
-React
-Javascript
-Css
+- React
+- Javascript
+- Css
