@@ -33,6 +33,7 @@ body {
 }
 
 aside {
+
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -194,13 +195,13 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 90%;
   padding: 1.5em;
   margin: 1.1em 0;
-  box-shadow: 2px 2px 2px #252525;
+  box-shadow: 2px 2px 2px var(--shadow-color);
   filter: drop-shadow(2px 2px 2px var(--shadow-color));
-  transition: box-shadow 250ms;
+  transition: filter 250ms;
 }
 
 .card:hover {
-  box-shadow: 2px 2px 2px var(--shadow-color);
+  filter: drop-shadow(5px 2px 3px var(--shadow-color));
 }
 
 .link {
