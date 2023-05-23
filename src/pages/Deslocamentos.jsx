@@ -1,6 +1,7 @@
 import CreateDeslocamento from "../components/CreateDeslocamento";
 import useFetchGet from "../hooks/useFetchGet";
 import { useState, useEffect } from "react";
+import { Plus } from "phosphor-react";
 import * as Dialog from '@radix-ui/react-dialog';
 
 const Deslocamentos = () => {
@@ -46,7 +47,7 @@ const Deslocamentos = () => {
         <main>
             <Dialog.Root>
                 <Dialog.Trigger disabled={createHandler} className='dialog-trigger' asChild>
-                    <button>Cadastrar novo deslocamento</button>
+                    <button>Cadastrar novo deslocamento <Plus size={16} color='#ebf1f1' /></button>
                 </Dialog.Trigger>
                 <Dialog.Portal>
                     <Dialog.Overlay className='dialog-overlay' />

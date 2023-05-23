@@ -1,5 +1,6 @@
 import CreateCondutor from "../components/CreateCondutor";
 import * as Dialog from '@radix-ui/react-dialog';
+import { Plus } from "phosphor-react";
 import { useState, useEffect } from "react";
 import useFetchGet from "../hooks/useFetchGet";
 
@@ -34,7 +35,7 @@ const Condutores = () => {
         <main>
             <Dialog.Root>
                 <Dialog.Trigger className="dialog-trigger" asChild>
-                    <button>Cadastrar novo condutor</button>
+                    <button>Cadastrar novo condutor <Plus size={16} color='#ebf1f1' /></button>
                 </Dialog.Trigger>
                 <Dialog.Portal>
                     <Dialog.Overlay className='dialog-overlay' />

@@ -1,5 +1,6 @@
 import useFetchGet from "../hooks/useFetchGet";
 import CreateVeiculo from "../components/CreateVeiculo";
+import { Plus } from 'phosphor-react';
 import * as Dialog from '@radix-ui/react-dialog';
 
 const Veiculos = () => {
@@ -9,7 +10,7 @@ const Veiculos = () => {
         <main>
             <Dialog.Root>
                 <Dialog.Trigger className='dialog-trigger' asChild>
-                    <button>Cadastrar novo veículo</button>
+                    <button>Cadastrar novo veículo <Plus size={16} color='#ebf1f1' /></button>
                 </Dialog.Trigger>
                 <Dialog.Portal>
                     <Dialog.Overlay className='dialog-overlay' />

@@ -85,7 +85,7 @@ main {
   margin-left: 1.5em;
 }
 
-.dialog-trigger {
+button {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -101,33 +101,64 @@ main {
   transition: filter 250ms;
 }
 
-.dialog-trigger:hover {
+button:hover {
   filter: drop-shadow(3px 3px 5px var(--shadow-color));
+}
+
+button:disabled {
+  opacity: .5;
+  pointer-events: none;
 }
 
 .dialog-overlay {
   position: fixed;
-  background-color: rgba(0,0,0, 0.5);
+  background-color: #cccccc80;
   inset: 0;
   width: 100vw;
   height: 100vh;
 }
 
 .dialog-content {
-  position: absolute;
-  margin-left: 5px;
-  top: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* gap: 1.75em; */
+  position: fixed;
+  top: 50%;
   left: 50%;
-  width: 100%;
-  padding: 2.5em;
+  height: 90%;
+  width: 90%;
+  padding: 1.5em 1.1em;
   border-radius: 2em;
-  translate: -50%;
-  background-color: #fafafa;
+  transform: translate(-50%, -50%);
+  background-color: var(--bg-color);
 }
 
 form {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  width: 100%;
+  /* align-items: center; */
+  /* justify-content: space-around; */
+}
+
+label {
+  align-self: center;
+}
+
+input {
+  background-color: var(--text-color);
+  padding: .4em;
+  border-radius: .5em;
+  border: none;
+}
+
+input[type="submit"] {
+  margin-top: 5px;
+  width: 80%;
+  align-self: center;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
