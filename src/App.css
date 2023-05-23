@@ -106,8 +106,10 @@ main {
 }
 
 button {
+  position: relative;
   display: flex;
   align-items: center;
+  overflow: hidden;
   gap: 5px;
   border-radius: 1.2em;
   border: 1px solid var(--accent-color);
@@ -119,6 +121,23 @@ button {
   margin: 1.5em 1.1em;
   padding: 1.1em;
   transition: filter 250ms;
+}
+
+button::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  color: #fff;
+  background-color: var(--accent-color);
+  transform: scale(0);
+  border-radius: 1em;
+  /* transform-origin: right; */
+  /* transition: transform 100ms ease-out; */
+}
+button:hover::after {
+  transform: scale(1);
+  /* transform-origin: left; */
 }
 
 button:hover {
@@ -199,6 +218,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .card {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   color: var(--text-color);
   font-size: 16px;
@@ -253,6 +273,15 @@ input[type="number"]::-webkit-outer-spin-button {
   ul {
     display: flex;
     flex-wrap: wrap;
+  }
+  
+  .dialog-content {
+    width: 80%;
+    height: 80%;
+  }
+
+  input, select {
+    width: 100%;
   }
   
 }

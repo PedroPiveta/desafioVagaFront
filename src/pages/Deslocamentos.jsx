@@ -10,39 +10,48 @@ const Deslocamentos = () => {
     const veiculos = useFetchGet('https://api-deslocamento.herokuapp.com/api/v1/Veiculo');
     const clientes = useFetchGet('https://api-deslocamento.herokuapp.com/api/v1/Cliente');
     const [formattedData, setFormattedData] = useState(null);
+    const [fim, setFim] = useState(null); 
     const [createHandler, setCreateHandler] = useState(true);
     const [missing, setMissing] = useState('Para criar um deslocamento é necessário ter pelo menos um condutor, um veículo e um cliente cadastrados.');
 
     useEffect(() => {
         if(condutores.data && veiculos.data && clientes.data) {
             if (condutores.data.length > 0 && veiculos.data.length > 0 && clientes.data.length > 0) {
-            setCreateHandler(false);
+                setCreateHandler(false);
             }
         }
       }, [condutores, veiculos, clientes]);
 
-    useEffect(() => {
+      useEffect(() => {
         if (data) {
-            const formattedDeslocamentos = data.reverse().map((deslocamento) => {
-                const inicioDeslocamento = new Date(deslocamento.inicioDeslocamento);
-
-                const options = {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                };
-
-                const formattedDate = new Intl.DateTimeFormat('pt-BR', options).format(inicioDeslocamento);
-
-                return {
-                    ...deslocamento,
-                    inicioDeslocamento: formattedDate,
-                };
-            });
-
-            setFormattedData(formattedDeslocamentos);
+          const formattedDeslocamentos = data.reverse().map((deslocamento) => {
+            const inicioDeslocamento = new Date(deslocamento.inicioDeslocamento);
+            const fimDeslocamento = deslocamento.fimDeslocamento ? new Date(deslocamento.fimDeslocamento) : null;
+      
+            const options = {
+              timeZone: 'America/Sao_Paulo',
+              year: 'numeric',
+              month: 'numeric',
+              day: 'numeric',
+              hour: 'numeric',
+              minute: 'numeric',
+            };
+      
+            const formattedInicio = inicioDeslocamento.toLocaleString('pt-BR', options);
+            const formattedFim = fimDeslocamento ? fimDeslocamento.toLocaleString('pt-BR', options) : null;
+      
+            return {
+              ...deslocamento,
+              inicioDeslocamento: formattedInicio,
+              fimDeslocamento: formattedFim,
+            };
+          });
+      
+          setFormattedData(formattedDeslocamentos);
         }
-    }, [data]);
+      }, [data]);
+      
+
     return (
         <main>
             <Dialog.Root>
@@ -65,6 +74,7 @@ const Deslocamentos = () => {
                 <div className='card' key={index}>
                     <div>Km inicial: {deslocamento.kmInicial}</div>
                     <div>Início do deslocamento: {deslocamento.inicioDeslocamento}</div>
+                    { fim && <div>Fim do deslocamento: {fim}</div>}
                 </div>
             ))}
         </main>
