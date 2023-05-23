@@ -11,7 +11,9 @@
 :root {
   --bg-color: #0B0B0C;
   --text-color: #ebf1f1;
-  --accent-color: #2520de;
+  --accent-color: #201d8d;
+  --bg-blur: #6c68ff90;
+  --input-bg: #6c68ff75;
   --shadow-color: rgba(37, 32, 222, 0.75);
 }
 
@@ -33,7 +35,6 @@ body {
 }
 
 aside {
-
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -131,7 +132,7 @@ button:disabled {
 
 .dialog-overlay {
   position: fixed;
-  background-color: #cccccc80;
+  background-color: var(--bg-blur);
   inset: 0;
   width: 100vw;
   height: 100vh;
@@ -144,9 +145,9 @@ button:disabled {
   position: fixed;
   top: 50%;
   left: 50%;
-  min-height: 90%;
-  width: 90%;
-  padding: 0 1.1em;
+  min-height: auto;
+  width: 60%;
+  padding: 1.2em;
   border-radius: 2em;
   transform: translate(-50%, -50%);
   background-color: var(--bg-color);
@@ -169,16 +170,25 @@ label {
 }
 
 input, select {
-  background-color: var(--text-color);
+  background-color: var(--input-bg);
+  color: var(--text-color);
   padding: .4em;
-  width: 80%;
+  width: 50%;
   border-radius: .2em;
   border: none;
 }
 
+option {
+  background-color: var(--accent-color);
+}
+
+input::placeholder {
+  --text-color: #a6b4fc;
+  color: var(--text-color);
+}
+
 input[type="submit"] {
   margin-top: 1.1em;
-  width: 80%;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
