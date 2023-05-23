@@ -4,6 +4,7 @@ import { UserCircle, Truck, Package, Person } from "phosphor-react";
 const DashBoard = () => {
     const location = useLocation();
     const navigate = useNavigate();
+
     function pathMatchRoute(route){
         if(location.pathname === route){
             return true;
@@ -12,19 +13,19 @@ const DashBoard = () => {
     return ( 
         <aside>
             <ul>
-                <div className="dashboard-item" onClick={() => navigate('/clientes')}>
+                <div className="dashboard-item" id={pathMatchRoute('/clientes') && "focus"} onClick={() => navigate('/clientes')}>
                     <UserCircle size={48} color="#ebf1f1" />
                     <li>Clientes</li>
                 </div>
-                <div className="dashboard-item" onClick={() => navigate('/condutores')}>
+                <div className="dashboard-item" id={pathMatchRoute('/condutores') && "focus"} onClick={() => navigate('/condutores')}>
                     <Person size={48} color="#ebf1f1" />
                     <li>Condutores</li>
                 </div>
-                <div className="dashboard-item" onClick={() => navigate('/veiculos')}>
+                <div className="dashboard-item" id={pathMatchRoute('/veiculos') && "focus"} onClick={() => navigate('/veiculos')}>
                     <Truck size={48} color="#ebf1f1" />
                     <li>Veiculos</li>
                 </div>
-                <div className="dashboard-item" onClick={() => navigate('/deslocamentos')}>
+                <div className="dashboard-item" id={pathMatchRoute('/deslocamentos') && "focus"} onClick={() => navigate('/deslocamentos')}>
                     <Package size={48} color="#ebf1f1" />
                     <li>Deslocamentos</li>
                 </div>
