@@ -277,7 +277,7 @@ input[type="number"]::-webkit-outer-spin-button {
   
   .dialog-content {
     width: 80%;
-    height: 80%;
+    height: 90%;
   }
 
   input, select {
