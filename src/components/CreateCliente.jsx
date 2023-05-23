@@ -25,19 +25,24 @@ const CreateCliente = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const cliente = {
-            numeroDocumento,
-            tipoDocumento,
-            nome,
-            logradouro,
-            numero,
-            bairro,
-            cidade,
-            uf,
+
+        if (tipoDocumento) {
+            const cliente = {
+                numeroDocumento,
+                tipoDocumento,
+                nome,
+                logradouro,
+                numero,
+                bairro,
+                cidade,
+                uf,
+            }
+            await axios.post('https://api-deslocamento.herokuapp.com/api/v1/Cliente', cliente);
+            window.location.reload()
+            console.log(cliente)
+        } else {
+            alert('Selecione um tipo de documento');
         }
-        await axios.post('https://api-deslocamento.herokuapp.com/api/v1/Cliente', cliente);
-        window.location.reload()
-        console.log(cliente)
     }
     return (
         <>
@@ -45,13 +50,14 @@ const CreateCliente = () => {
                 <label htmlFor="nome">Nome do Cliente</label>
                 <input type="text" name="nome" id="nome" onChange={(e) => setNome(e.target.value)} required />
                 <label htmlFor="tipoDoc">Tipo do documento</label>
-                <select name="tipoDoc" id="tipoDoc" defaultValue="CPF" onChange={(e) => setTipoDocumento(e.target.value)}>
+                <select name="tipoDoc" id="tipoDoc" value={tipoDocumento} onChange={(e) => setTipoDocumento(e.target.value)}>
+                    <option value={null}>Selecione um tipo de documento</option>
                     <option value="CPF">CPF</option>
                     <option value="CNPJ">CNPJ</option>
                     <option value="RG">RG</option>
                 </select>
                 <label htmlFor="numeroDoc">Número do documento</label>
-                <InputMask  inputMode='numeric' mask={dataMask} defaultValue={numeroDocumento} placeholder={dataMask} onChange={(e) => setNumeroDocumento(e.target.value)} required />
+                <InputMask inputMode='numeric' mask={dataMask} defaultValue={numeroDocumento} placeholder={dataMask} onChange={(e) => setNumeroDocumento(e.target.value)} required />
                 <label htmlFor="logradouro">Logradouro</label>
                 <input type="text" name="logradouro" id="logradouro" onChange={(e) => setLogradouro(e.target.value)} required />
                 <label htmlFor="numero">Número</label>

@@ -54,7 +54,21 @@ const DetalhesCliente = () => {
                     </Dialog.Content>
                 </Dialog.Portal>
             </Dialog.Root>
+            
             <button onClick={handleDelete}>Excluir Cliente</button>
+
+            {/* <Dialog.Root>
+                <Dialog.Trigger className="dialog-trigger" asChild>
+                    <button>Excluir cliente</button>
+                </Dialog.Trigger>
+                <Dialog.Portal>
+                    <Dialog.Overlay className="dialog-overlay" />
+                    <Dialog.Content className="dialog-content">
+                        <Dialog.Title className="dialog-title">Excluir cliente</Dialog.Title>
+                        <button onClick={handleDelete}>Excluir Cliente</button>
+                    </Dialog.Content>
+                </Dialog.Portal>
+            </Dialog.Root> */}
         </main>
     );
 };
