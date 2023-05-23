@@ -130,14 +130,12 @@ button::after {
   inset: 0;
   color: #fff;
   background-color: var(--accent-color);
-  transform: scale(0);
+  filter: opacity(0);
   border-radius: 1em;
-  /* transform-origin: right; */
-  /* transition: transform 100ms ease-out; */
+  transition: filter 250ms ease-in;
 }
 button:hover::after {
-  transform: scale(1);
-  /* transform-origin: left; */
+  filter: opacity(1);
 }
 
 button:hover {

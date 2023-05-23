@@ -66,7 +66,7 @@ const Deslocamentos = () => {
                     </Dialog.Content>
                 </Dialog.Portal>
             </Dialog.Root>
-            {createHandler && <div className='missing'>{missing}</div>}
+            {createHandler && <p className='missing'>{missing}</p>}
             
             {isPending && <div>Carregando...</div>}
             {error && <div>{error}</div>}

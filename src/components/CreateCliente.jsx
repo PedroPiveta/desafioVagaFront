@@ -11,7 +11,7 @@ const CreateCliente = () => {
     const [bairro, setBairro] = useState('');
     const [cidade, setCidade] = useState('');
     const [uf, setUf] = useState('');
-    const [dataMask, setDataMask] = useState('999.999.999-99');
+    const [dataMask, setDataMask] = useState('');
 
     useEffect(() => {
         if (tipoDocumento === 'CPF') {
@@ -20,7 +20,7 @@ const CreateCliente = () => {
             setDataMask('99.999.999/9999-99')
         } else if (tipoDocumento === 'RG') {
             setDataMask('99.999.999-9')
-        }
+        } 
     }), [tipoDocumento];
 
     const handleSubmit = async (e) => {
