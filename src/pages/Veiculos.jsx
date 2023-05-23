@@ -22,7 +22,7 @@ const Veiculos = () => {
             
             {isPending && <div>Carregando...</div>}
             {error && <div>{error}</div>}
-            {data && data.map((veiculo, index) => (
+            {data && data.reverse().map((veiculo, index) => (
                 <div className='card' key={index}>
                     <div>Marca: {veiculo.marcaModelo}</div>
                 </div>

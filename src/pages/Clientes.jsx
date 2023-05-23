@@ -23,7 +23,7 @@ const Clientes = () => {
       </Dialog.Root>
       {isPending && <div>Carregando...</div>}
       {error && <div>{error}</div>}
-      {data && data.map((cliente, index) => (
+      {data && data.reverse().map((cliente, index) => (
         <div key={index}>
           <Link className='link' to={`/clientes/${cliente.id}`}   >
             <div className='card' key={index}>

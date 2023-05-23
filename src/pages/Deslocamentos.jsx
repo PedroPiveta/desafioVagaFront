@@ -5,7 +5,20 @@ import * as Dialog from '@radix-ui/react-dialog';
 
 const Deslocamentos = () => {
     const { data, error, isPending } = useFetchGet('https://api-deslocamento.herokuapp.com/api/v1/Deslocamento');
+    const condutores = useFetchGet('https://api-deslocamento.herokuapp.com/api/v1/Condutor');
+    const veiculos = useFetchGet('https://api-deslocamento.herokuapp.com/api/v1/Veiculo');
+    const clientes = useFetchGet('https://api-deslocamento.herokuapp.com/api/v1/Cliente');
     const [formattedData, setFormattedData] = useState(null);
+    const [createHandler, setCreateHandler] = useState(true);
+    const [missing, setMissing] = useState('Para criar um deslocamento é necessário ter pelo menos um condutor, um veículo e um cliente cadastrados.');
+
+    useEffect(() => {
+        if(condutores.data && veiculos.data && clientes.data) {
+            if (condutores.data.length > 0 && veiculos.data.length > 0 && clientes.data.length > 0) {
+            setCreateHandler(false);
+            }
+        }
+      }, [condutores, veiculos, clientes]);
 
     useEffect(() => {
         if (data) {
@@ -29,11 +42,10 @@ const Deslocamentos = () => {
             setFormattedData(formattedDeslocamentos);
         }
     }, [data]);
-
     return (
         <main>
             <Dialog.Root>
-                <Dialog.Trigger className='dialog-trigger' asChild>
+                <Dialog.Trigger disabled={createHandler} className='dialog-trigger' asChild>
                     <button>Cadastrar novo deslocamento</button>
                 </Dialog.Trigger>
                 <Dialog.Portal>
@@ -44,6 +56,7 @@ const Deslocamentos = () => {
                     </Dialog.Content>
                 </Dialog.Portal>
             </Dialog.Root>
+            {createHandler && <div className='missing'>{missing}</div>}
             
             {isPending && <div>Carregando...</div>}
             {error && <div>{error}</div>}
