@@ -15,6 +15,10 @@
   --shadow-color: rgba(37, 32, 222, 0.75);
 }
 
+html {
+  overflow: hidden;
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
