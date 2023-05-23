@@ -134,6 +134,7 @@ button::after {
   border-radius: 1em;
   transition: filter 250ms ease-in;
 }
+
 button:hover::after {
   filter: opacity(1);
 }
@@ -241,8 +242,13 @@ input[type="number"]::-webkit-outer-spin-button {
   color: #252525;
 }
 
+.delete {
+  cursor: pointer;
+  
+}
+
 .not-found h2 {
-  color: darkblue;
+  color: var(--accent-color);
 }
 
 .not-found a {
