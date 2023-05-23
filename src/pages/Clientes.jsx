@@ -1,5 +1,5 @@
 import * as Dialog from '@radix-ui/react-dialog';
-import { PencilSimple } from 'phosphor-react';
+import { PencilSimple, Plus } from 'phosphor-react';
 import { Link } from 'react-router-dom';
 import useFetchGet from '../hooks/useFetchGet';
 import CreateCliente from '../components/CreateCliente';
@@ -11,7 +11,7 @@ const Clientes = () => {
     <main>
       <Dialog.Root>
         <Dialog.Trigger className='dialog-trigger' asChild>
-          <button>Cadastrar novo cliente</button>
+          <button>Cadastrar novo cliente <Plus size={16} color='#ebf1f1' /></button>
         </Dialog.Trigger>
         <Dialog.Portal>
           <Dialog.Overlay className='dialog-overlay' />
@@ -27,8 +27,8 @@ const Clientes = () => {
         <div key={index}>
           <Link className='link' to={`/clientes/${cliente.id}`}   >
             <div className='card' key={index}>
-              <div className='card-title'>nome: {cliente.nome}</div> 
-              <PencilSimple size={24} color='#252525' />
+              <div className='card-title'>Nome: {cliente.nome}</div> 
+              <PencilSimple size={24} color='#ebf1f1' />
             </div>
           </Link>
         </div>

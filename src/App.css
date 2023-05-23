@@ -8,8 +8,16 @@
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
+:root {
+  --bg-color: #0B0B0C;
+  --text-color: #ebf1f1;
+  --accent-color: #2520de;
+  --shadow-color: rgba(37, 32, 222, 0.75);
+}
 
 body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
   position: relative;
   margin: 0;
   padding: 0;
@@ -25,9 +33,9 @@ aside {
   flex-direction: column;
   flex-wrap: wrap;
   font-size: 16px;
-  box-shadow: 2px 2px 2px rgba(0,0,0, 0.5);
+  box-shadow: 1px 0px 3px var(--shadow-color);
   padding: 1.1em;
-  margin: 0 1.1em;
+  margin: 0 1.2em 0 0;
   /* max-width: 25%; */
   min-height: 100vh;
 }
@@ -58,7 +66,8 @@ ul li {
   position: absolute;
   width: 100%;
   height: 2px;
-  background-color: red;
+  background-color: var(--accent-color);
+  filter: drop-shadow(5px 0 5px var(--shadow-color));
   bottom: 0;
   left: 0;
   transform: scaleX(0);
@@ -73,11 +82,27 @@ main {
   width: 100%;
   flex-direction: row;
   flex-wrap: wrap;
+  margin-left: 1.5em;
 }
 
 .dialog-trigger {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 1.2em;
+  border: 1px solid var(--accent-color);
+  filter: drop-shadow(2px 2px 2px var(--shadow-color));
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-weight: 700;
+  cursor: pointer;
   margin: 1.1em;
   padding: 1.1em;
+  transition: filter 250ms;
+}
+
+.dialog-trigger:hover {
+  filter: drop-shadow(3px 3px 5px var(--shadow-color));
 }
 
 .dialog-overlay {
@@ -114,13 +139,19 @@ input[type="number"]::-webkit-outer-spin-button {
 .card {
   display: flex;
   justify-content: space-between;
+  color: var(--text-color);
   font-size: 16px;
   width: 90%;
   padding: 1.5em;
   margin: 1.1em 0;
-  box-shadow: 2px 2px 2px rgba(0,0,0, 0.5);
+  box-shadow: 2px 2px 2px #252525;
+  filter: drop-shadow(2px 2px 2px var(--shadow-color));
+  transition: box-shadow 250ms;
 }
 
+.card:hover {
+  box-shadow: 2px 2px 2px var(--shadow-color);
+}
 
 .link {
   text-decoration: none;
