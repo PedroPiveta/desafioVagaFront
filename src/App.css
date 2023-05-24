@@ -13,6 +13,9 @@
   --text-color: #ebf1f1;
   --accent-color: #201d8d;
   --bg-blur: #6c68ff90;
+  --text-delete: #da3633;
+  --bg-delete: #da3633;
+  --shadow-delete: #ff000050;
   --input-bg: #6c68ff75;
   --shadow-color: rgba(37, 32, 222, 0.75);
 }
@@ -224,15 +227,50 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: 16px;
   width: 90%;
   padding: 1.5em;
-  margin: 1.1em 0;
+  margin: 1.5em  0;
+  border: 2px solid var(--accent-color);
   border-radius: 1em;
   box-shadow: 2px 2px 2px var(--shadow-color);
-  filter: drop-shadow(2px 2px 2px var(--shadow-color));
-  transition: filter 250ms;
+  transition: all 250ms ease-in;
 }
 
 .card:hover {
-  filter: drop-shadow(5px 2px 3px var(--shadow-color));
+  box-shadow: 4px 2px 5px var(--shadow-color);
+  background-color: var(--accent-color);
+}
+
+.detalhes {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-right: 2em;
+}
+
+.manage {
+  display: flex;
+}
+
+#delete-btn {
+  color: var(--text-delete);
+  font-weight: 700;
+  box-shadow: 2px 2px 2px var(--shadow-delete);
+  border: 1px solid var(--bg-delete);
+  transition: all 250ms ease-in;
+}
+
+#delete-btn:hover {
+  /* filter: opacity(.75); */
+  background-color: var(--bg-delete);
+  color: var(--text-color);
+}
+
+#delete-btn::after {
+  display: none;
+}
+
+p {
+  margin-right: 1.2em;
 }
 
 .link {
@@ -246,7 +284,6 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .delete {
   cursor: pointer;
-
 }
 
 .not-found h2 {

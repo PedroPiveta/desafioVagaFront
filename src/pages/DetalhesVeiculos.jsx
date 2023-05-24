@@ -32,26 +32,28 @@ const DetalhesVeiculos = () => {
     };
 
     return (
-        <main>
+        <main className="detalhes">
             <h1>Dados do veiculo</h1>
             <div>Marca: {data?.marcaModelo}</div>
             <div>Ano de fabricação: {data?.anoFabricacao}</div>
             <div>Quilometragem atual: {data?.kmAtual}</div>
     
-            <Dialog.Root>
-                <Dialog.Trigger className="dialog-trigger" asChild>
-                    <button>Editar Veiculo</button>
-                </Dialog.Trigger>
-                <Dialog.Portal>
-                    <Dialog.Overlay className="dialog-overlay" />
-                    <Dialog.Content className="dialog-content">
-                        <Dialog.Title className="dialog-title">Editar Veiculo</Dialog.Title>
-                        <Editveiculo />
-                    </Dialog.Content>
-                </Dialog.Portal>
-            </Dialog.Root>
-            
-            <button onClick={handleDelete}>Excluir Veiculo</button>
+            <div className="manage">
+                <Dialog.Root>
+                    <Dialog.Trigger className="dialog-trigger" asChild>
+                        <button>Editar Veiculo</button>
+                    </Dialog.Trigger>
+                    <Dialog.Portal>
+                        <Dialog.Overlay className="dialog-overlay" />
+                        <Dialog.Content className="dialog-content">
+                            <Dialog.Title className="dialog-title">Editar Veiculo</Dialog.Title>
+                            <Editveiculo />
+                        </Dialog.Content>
+                    </Dialog.Portal>
+                </Dialog.Root>
+                
+                <button id="delete-btn" onClick={handleDelete}>Excluir Veiculo</button>
+            </div>
 
             {/* <Dialog.Root>
                 <Dialog.Trigger className="dialog-trigger" asChild>

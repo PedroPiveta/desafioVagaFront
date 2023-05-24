@@ -1,6 +1,6 @@
 import useFetchGet from "../hooks/useFetchGet";
 import CreateVeiculo from "../components/CreateVeiculo";
-import { Plus } from 'phosphor-react';
+import { PencilSimple, Plus } from 'phosphor-react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Link } from "react-router-dom";
 
@@ -28,7 +28,8 @@ const Veiculos = () => {
                 <div  key={index}>
                     <Link className="link" to={`/veiculos/${veiculo.id}`}>
                         <div className="card">
-                            <div>Marca: {veiculo.marcaModelo}</div>
+                            <div className="card-title">Marca: {veiculo.marcaModelo}</div>
+                            <PencilSimple size={24} color='#ebf1f1' />
                         </div>
                     </Link>
                 </div>

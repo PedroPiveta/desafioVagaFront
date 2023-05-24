@@ -32,7 +32,7 @@ const DetalhesCliente = () => {
     };
 
     return (
-        <main>
+        <main className="detalhes">
             <h1>Dados Cliente</h1>
             <div>nome: {data?.nome}</div>
             <div>numero documento: {data?.numeroDocumento}</div>
@@ -42,20 +42,24 @@ const DetalhesCliente = () => {
             <div>bairro: {data?.bairro}</div>
             <div>cidade: {data?.cidade}</div>
             <div>uf: {data?.uf}</div>
-            <Dialog.Root>
-                <Dialog.Trigger className="dialog-trigger" asChild>
-                    <button>Editar cliente</button>
-                </Dialog.Trigger>
-                <Dialog.Portal>
-                    <Dialog.Overlay className="dialog-overlay" />
-                    <Dialog.Content className="dialog-content">
-                        <Dialog.Title className="dialog-title">Editar cliente</Dialog.Title>
-                        <EditCliente />
-                    </Dialog.Content>
-                </Dialog.Portal>
-            </Dialog.Root>
-            
-            <button onClick={handleDelete}>Excluir Cliente</button>
+
+
+            <div className="manage">
+                <Dialog.Root>
+                    <Dialog.Trigger className="dialog-trigger" asChild>
+                        <button>Editar cliente</button>
+                    </Dialog.Trigger>
+                    <Dialog.Portal>
+                        <Dialog.Overlay className="dialog-overlay" />
+                        <Dialog.Content className="dialog-content">
+                            <Dialog.Title className="dialog-title">Editar cliente</Dialog.Title>
+                            <EditCliente />
+                        </Dialog.Content>
+                    </Dialog.Portal>
+                </Dialog.Root>
+                
+                <button id="delete-btn" onClick={handleDelete}>Excluir Cliente</button>
+            </div>
 
             {/* <Dialog.Root>
                 <Dialog.Trigger className="dialog-trigger" asChild>

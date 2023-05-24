@@ -55,28 +55,31 @@ const DeatlhesCondutor = () => {
     };
 
     return (
-        <main>
+        <main className="detalhes">
+            
             <h1>Dados Condutor</h1>
-            <div>Nome: {data?.nome}</div>
-            <div>Número habilitação: {data?.numeroHabilitacao}</div>
-            <div>Categoria habilitação: {data?.catergoriaHabilitacao}</div>
-            <div>Vencimento da habilitação: {formattedData}</div>
+            <div><span>Nome:</span> {data?.nome}</div>
+            <div><span>Número habilitação:</span> {data?.numeroHabilitacao}</div>
+            <div><span>Categoria habilitação:</span> {data?.catergoriaHabilitacao}</div>
+            <div><span>Vencimento da habilitação:</span> {formattedData}</div>
 
-            <Dialog.Root>
-                <Dialog.Trigger className="dialog-trigger" asChild>
-                    <button>Editar condutor</button>
-                </Dialog.Trigger>
-                <Dialog.Portal>
-                    <Dialog.Overlay className="dialog-overlay" />
-                    <Dialog.Content className="dialog-content">
-                        <Dialog.Title className="dialog-title">
-                            Editar dados do condutor
-                        </Dialog.Title>
-                        <EditCondutor />
-                    </Dialog.Content>
-                </Dialog.Portal>
-            </Dialog.Root>
-            <button onClick={handleDelete}>Excluir Condutor</button>
+            <div className="manage">
+                <Dialog.Root>
+                    <Dialog.Trigger className="dialog-trigger" asChild>
+                        <button>Editar condutor</button>
+                    </Dialog.Trigger>
+                    <Dialog.Portal>
+                        <Dialog.Overlay className="dialog-overlay" />
+                        <Dialog.Content className="dialog-content">
+                            <Dialog.Title className="dialog-title">
+                                Editar dados do condutor
+                            </Dialog.Title>
+                            <EditCondutor />
+                        </Dialog.Content>
+                    </Dialog.Portal>
+                </Dialog.Root>
+                <button id="delete-btn" onClick={handleDelete}>Excluir Condutor</button>
+            </div>
         </main>
     );
 };
