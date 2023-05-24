@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { redirect } from "react-router-dom";
+import InputMask from "react-input-mask";
 
 const CreateVeiculo = () => {
 
@@ -8,9 +8,15 @@ const CreateVeiculo = () => {
     const [marcaModelo, setMarcaModelo] = useState('');
     const [anoFabricacao, setAnoFabricacao] = useState(0);
     const [kmAtual, setKmAtual] = useState(0);
+    const [mask, setMask] = useState('aaa-9999');
+    const ano = new Date().getFullYear();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (anoFabricacao < 1900 || anoFabricacao > ano) {
+            alert('Ano de fabricação inválido');
+            return;
+        }
         const veiculo = {
             placa,
             marcaModelo,
@@ -24,11 +30,11 @@ const CreateVeiculo = () => {
         <>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="placa">Placa</label>
-                <input type="text" name="placa" id="placa" onChange={(e) => setPlaca(e.target.value)} required />
+                <InputMask mask={mask} placeholder='AAA-0000' type="text" name="placa" id="placa" onChange={(e) => setPlaca(e.target.value)} required />
                 <label htmlFor="marcaModelo">Marca/Modelo</label>
-                <input type="text" name="marcaModelo" id="marcaModelo" onChange={(e) => setMarcaModelo(e.target.value)} required />
+                <input type="text" placeholder="Ex. Ford" name="marcaModelo" id="marcaModelo" onChange={(e) => setMarcaModelo(e.target.value)} required />
                 <label htmlFor="anoFabricacao">Ano de Fabricação</label>
-                <input type="number" name="anoFabricacao" id="anoFabricacao" onChange={(e) => setAnoFabricacao(parseInt(e.target.value))} required />
+                <input type="number" placeholder="Ex. 2022" name="anoFabricacao" id="anoFabricacao" onChange={(e) => setAnoFabricacao(parseInt(e.target.value))} required />
                 <label htmlFor="kmAtual">Quilometragem Atual</label>
                 <input type="number" name="kmAtual" id="kmAtual" onChange={(e) => setKmAtual(parseInt(e.target.value))} required />
                 <input type="submit" value="Cadastrar veículo" />

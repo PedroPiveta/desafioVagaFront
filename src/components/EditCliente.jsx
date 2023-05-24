@@ -7,8 +7,6 @@ const EditCliente = () => {
     const { id } = useParams();
     const { data, error, isPending } = useFetchGet(`https://api-deslocamento.herokuapp.com/api/v1/Cliente/${id}`);
 
-    const [numeroDocumento, setNumeroDocumento] = useState('');
-    const [tipoDocumento, setTipoDocumento] = useState('');
     const [nome, setNome] = useState('');
     const [logradouro, setLogradouro] = useState('');
     const [numero, setNumero] = useState('');
@@ -39,6 +37,8 @@ const EditCliente = () => {
     }
     return (
         <>
+        {isPending && <div>Carregando...</div>}
+        {error && <div>{error}</div>}
             {data ? (
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="nome">Nome do Cliente</label>

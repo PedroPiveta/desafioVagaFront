@@ -18,25 +18,37 @@ const EditCondutor = () => {
             vencimentoHabilitacao,
         }
 
-        try {
-            await axios.put(`https://api-deslocamento.herokuapp.com/api/v1/Condutor/${id}`, condutor);
-            window.location.reload()
-        } catch (error) {
-            alert("Erro ao editar condutor");
+        if (!categoriaHabilitacao && categoriaHabilitacao !== data.categoriaHabilitacao) {
+            alert('Preencha a categoria da habilitação');
+        } else {
+            try {
+                await axios.put(`https://api-deslocamento.herokuapp.com/api/v1/Condutor/${id}`, condutor);
+                window.location.reload()
+            } catch (error) {
+                alert("Erro ao editar condutor");
+            }
         }
+
     }
     return (
         <>
-            {data ? (
+            {isPending && <div>Carregando...</div>}
+            {error && <div>{error}</div>}
+            {data && (
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="categoria">Categoria da habilitação</label>
-                    <input type="text" name="categoria" id="categoria" placeholder={data.categoriaHabilitacao} onChange={(e) => setCategoriaHabilitacao(e.target.value)} />
+                    <select type="text" name="categoria" id="categoria" placeholder={data.categoriaHabilitacao} onChange={(e) => setCategoriaHabilitacao(e.target.value)} >
+                        <option value={null}>Selecione uma categoria</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                    </select>
                     <label htmlFor="vencimentoHabilitacao">Vencimento da habilitação</label>
                     <input type="date" name="vencimentoHabilitacao" id="vencimentoHabilitacao" placeholder={data.vencimentoHabilitacao} onChange={(e) => setVencimentoHabilitacao(e.target.value)} />
                     <input type="submit" value="Salvar novos dados do condutor" />
                 </form>
-            ) : (
-                <div>Carregando...</div>
             )}
         </>
     );

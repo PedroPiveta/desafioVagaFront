@@ -2,6 +2,7 @@ import useFetchGet from "../hooks/useFetchGet";
 import CreateVeiculo from "../components/CreateVeiculo";
 import { Plus } from 'phosphor-react';
 import * as Dialog from '@radix-ui/react-dialog';
+import { Link } from "react-router-dom";
 
 const Veiculos = () => {
     const { data, error, isPending } = useFetchGet('https://api-deslocamento.herokuapp.com/api/v1/Veiculo');
@@ -24,8 +25,12 @@ const Veiculos = () => {
             {isPending && <div>Carregando...</div>}
             {error && <div>{error}</div>}
             {data && data.reverse().map((veiculo, index) => (
-                <div className='card' key={index}>
-                    <div>Marca: {veiculo.marcaModelo}</div>
+                <div  key={index}>
+                    <Link className="link" to={`/veiculos/${veiculo.id}`}>
+                        <div className="card">
+                            <div>Marca: {veiculo.marcaModelo}</div>
+                        </div>
+                    </Link>
                 </div>
             ))}
         </main>
