@@ -10,6 +10,9 @@ const DeatlhesCondutor = () => {
     const { data, error } = useFetchGet(
         `https://api-deslocamento.herokuapp.com/api/v1/Condutor/${id}`
     );
+
+    error && console.log(error);
+
     const [formattedData, setFormattedData] = useState(null);
 
     const condutor = {

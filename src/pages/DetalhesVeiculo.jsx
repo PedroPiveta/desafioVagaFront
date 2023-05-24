@@ -4,11 +4,13 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Editveiculo from "../components/EditVeiculo";
 
-const DetalhesVeiculos = () => {
+const DetalhesVeiculo = () => {
     const { id } = useParams();
     const { data, error } = useFetchGet(
         `https://api-deslocamento.herokuapp.com/api/v1/Veiculo/${id}`
     );
+
+    error && console.log(error);
 
     const veiculo = {
         "id": data?.id,
@@ -35,6 +37,7 @@ const DetalhesVeiculos = () => {
         <main className="detalhes">
             <h1>Dados do veiculo</h1>
             <div>Marca: {data?.marcaModelo}</div>
+            <div>Placa: {data?.placa}</div>
             <div>Ano de fabricação: {data?.anoFabricacao}</div>
             <div>Quilometragem atual: {data?.kmAtual}</div>
     
@@ -71,4 +74,4 @@ const DetalhesVeiculos = () => {
     );
 };
  
-export default DetalhesVeiculos;
+export default DetalhesVeiculo;

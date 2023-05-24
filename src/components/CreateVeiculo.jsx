@@ -8,6 +8,7 @@ const CreateVeiculo = () => {
     const [marcaModelo, setMarcaModelo] = useState('');
     const [anoFabricacao, setAnoFabricacao] = useState(0);
     const [kmAtual, setKmAtual] = useState(0);
+    // eslint-disable-next-line no-unused-vars
     const [mask, setMask] = useState('aaa-9999');
     const ano = new Date().getFullYear();
 
@@ -30,7 +31,7 @@ const CreateVeiculo = () => {
         <>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="placa">Placa</label>
-                <InputMask mask={mask} placeholder='AAA-0000' type="text" name="placa" id="placa" onChange={(e) => setPlaca(e.target.value)} required />
+                <InputMask mask={mask} placeholder='AAA-0000' type="text" name="placa" id="placa" onChange={(e) => setPlaca(e.target.value.toUpperCase())} required />
                 <label htmlFor="marcaModelo">Marca/Modelo</label>
                 <input type="text" placeholder="Ex. Ford" name="marcaModelo" id="marcaModelo" onChange={(e) => setMarcaModelo(e.target.value)} required />
                 <label htmlFor="anoFabricacao">Ano de Fabricação</label>

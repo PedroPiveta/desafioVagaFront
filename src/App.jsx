@@ -8,7 +8,7 @@ import Deslocamentos from './pages/Deslocamentos';
 import DashBoard from './components/Dashboard';
 import Veiculos from './pages/Veiculos';
 import NotFound from './pages/NotFound';
-import DetalhesVeiculos from './pages/DetalhesVeiculos';
+import DetalheVeiculos from './pages/DetalhesVeiculo';
 
 function App() {
   
@@ -24,7 +24,7 @@ function App() {
           <Route path='/condutores/:id' element={<DeatlhesCondutor />} />
           <Route path='/deslocamentos' element={<Deslocamentos />} />
           <Route path='/veiculos' element={<Veiculos />} />
-          <Route path='/veiculos/:id' element={<DetalhesVeiculos />} />
+          <Route path='/veiculos/:id' element={<DetalheVeiculos />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </Router>

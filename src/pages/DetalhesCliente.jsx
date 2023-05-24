@@ -6,9 +6,11 @@ import axios from "axios";
 
 const DetalhesCliente = () => {
     const { id } = useParams();
-    const { data, error } = useFetchGet(
+    const { data, error, isPending } = useFetchGet(
         `https://api-deslocamento.herokuapp.com/api/v1/Cliente/${id}`
     );
+
+    error && console.log(error);
 
     const cliente = {
         "id": data?.id,
@@ -31,9 +33,13 @@ const DetalhesCliente = () => {
 
     };
 
+
+    
+
     return (
         <main className="detalhes">
             <h1>Dados Cliente</h1>
+            {isPending && <div>Carregando...</div>}
             <div>nome: {data?.nome}</div>
             <div>numero documento: {data?.numeroDocumento}</div>
             <div>tipo documento: {data?.tipoDocumento}</div>
