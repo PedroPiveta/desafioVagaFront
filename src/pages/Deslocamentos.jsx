@@ -158,9 +158,11 @@ const Deslocamentos = () => {
                         {/* <div>Condutor: {condutor.data.nome}</div> */}
                     </div>
                     <div className="deslocamento-btn">
-                        <button onClick={() => handleEncerrar(deslocamento.id)} disabled={deslocamento.fimDeslocamento ? true : false}>
-                            <Check size={24} color={color} className={deslocamento.fimDeslocamento ? 'encerrado' : ''} />
-                        </button>
+                        <abbr title="Clique para finalizar deslocamento">
+                            <button onClick={() => handleEncerrar(deslocamento.id)} disabled={deslocamento.fimDeslocamento ? true : false}>
+                                <Check size={24} color={color} className={deslocamento.fimDeslocamento ? 'encerrado' : ''} />
+                            </button>
+                        </abbr>
                         {formattedData && (<AlertDialog.Root>
                             <AlertDialog.Trigger className="dialog-trigger">
                                 <Trash size={24} color={color} className="delete" />
