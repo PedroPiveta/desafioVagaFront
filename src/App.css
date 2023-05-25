@@ -200,6 +200,12 @@ button:disabled {
   animation: fadeOut 300ms ease-out;
 }
 
+.alert-buttons {
+  display: flex;
+  margin-top: 5em;
+  gap: 2em;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -270,6 +276,22 @@ input[type="number"]::-webkit-outer-spin-button {
   flex-direction: column;
   justify-content: space-around;
   padding-right: 2em;
+}
+
+.deslocamento {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.deslocamento-btn {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+}
+
+.encerrado {
+  opacity: .5;
 }
 
 .manage {
