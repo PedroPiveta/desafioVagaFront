@@ -11,9 +11,11 @@ const Deslocamentos = () => {
     const veiculos = useFetchGet('https://api-deslocamento.herokuapp.com/api/v1/Veiculo');
     const clientes = useFetchGet('https://api-deslocamento.herokuapp.com/api/v1/Cliente');
     const [formattedData, setFormattedData] = useState(null);
-    const [fim, setFim] = useState(null);
     const [createHandler, setCreateHandler] = useState(true);
     const [missing, setMissing] = useState('Para criar um deslocamento é necessário ter pelo menos um condutor, um veículo e um cliente cadastrados.');
+
+    let  color = '#6c68ff';
+
 
     useEffect(() => {
         if (condutores.data && veiculos.data && clientes.data) {
@@ -82,7 +84,7 @@ const Deslocamentos = () => {
         <main>
             <Dialog.Root>
                 <Dialog.Trigger disabled={createHandler} className='dialog-trigger' asChild>
-                    <button>Cadastrar novo deslocamento <Plus size={16} color='#ebf1f1' /></button>
+                    <button>Cadastrar novo deslocamento <Plus size={16} color={color} /></button>
                 </Dialog.Trigger>
                 <Dialog.Portal>
                     <Dialog.Overlay className='dialog-overlay' />
@@ -101,7 +103,7 @@ const Deslocamentos = () => {
                     {/* <div>Km inicial: {deslocamento.kmInicial}</div> */}
                     <div>Início do deslocamento: {deslocamento.inicioDeslocamento}</div>
                     {deslocamento.fimDeslocamento && <div>Fim do deslocamento: {deslocamento.fimDeslocamento}</div>}
-                    <Trash size={24} color='#ebf1f1' className="delete" onClick={(e) => handleDelete(deslocamento.id)} />
+                    <Trash size={24} color={color} className="delete" onClick={(e) => handleDelete(deslocamento.id)} />
                 </div>
             ))}
         </main>

@@ -7,11 +7,14 @@ import CreateCliente from '../components/CreateCliente';
 const Clientes = () => {
   const { data, error, isPending } = useFetchGet('https://api-deslocamento.herokuapp.com/api/v1/Cliente');
 
+  let color = '#6c68ff';
+
+
   return (
     <main>
       <Dialog.Root>
         <Dialog.Trigger className='dialog-trigger' asChild>
-          <button>Cadastrar novo cliente <Plus size={16} color='#ebf1f1' /></button>
+          <button>Cadastrar novo cliente <Plus size={16} color={color} /></button>
         </Dialog.Trigger>
         <Dialog.Portal>
           <Dialog.Overlay className='dialog-overlay' />
@@ -27,8 +30,8 @@ const Clientes = () => {
         <div key={index}>
           <Link className='link' to={`/clientes/${cliente.id}`}   >
             <div className='card' key={index}>
-              <div className='card-title'>Nome: {cliente.nome}</div> 
-              <PencilSimple size={24} color='#ebf1f1' />
+              <div className='card-title'>Nome: {cliente.nome}</div>
+              <PencilSimple size={24} color={color} />
             </div>
           </Link>
         </div>

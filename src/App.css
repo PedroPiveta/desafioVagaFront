@@ -14,10 +14,16 @@
   --accent-color: #201d8d;
   --bg-blur: #6c68ff90;
   --text-delete: #da3633;
+  --delete-hover: #ebf1f1;
   --bg-delete: #da3633;
   --shadow-delete: #ff000050;
   --input-bg: #6c68ff75;
   --shadow-color: rgba(37, 32, 222, 0.75);
+}
+
+*:has(.light-mode) {
+  --bg-color: #ebf1f1;
+  --text-color: #6c68ff;
 }
 
 html {
@@ -124,33 +130,38 @@ button {
   cursor: pointer;
   margin: 1.5em 1.1em;
   padding: 1.1em;
-  transition: filter 250ms;
-}
-
-button::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  color: #fff;
-  background-color: var(--accent-color);
-  filter: opacity(0);
-  border-radius: 1em;
-  transition: filter 250ms ease-in;
-}
-
-button:hover::after {
-  filter: opacity(1);
+  transition: all 250ms;
 }
 
 button:hover {
   filter: drop-shadow(3px 3px 5px var(--shadow-color));
+  background-color: var(--accent-color);
+
 }
 
 button:disabled {
   opacity: .5;
   pointer-events: none;
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 
 .dialog-overlay {
   position: fixed;
@@ -173,6 +184,16 @@ button:disabled {
   border-radius: 2em;
   transform: translate(-50%, -50%);
   background-color: var(--bg-color);
+}
+
+.dialog-overlay[data-state='open'],
+.dialog-content[data-state='open'] {
+  animation: fadeIn 300ms ease-out;
+}
+
+.dialog-overlay[data-state='closed'],
+.dialog-content[data-state='closed'] {
+  animation: fadeOut 300ms ease-out;
 }
 
 form {
@@ -262,7 +283,7 @@ input[type="number"]::-webkit-outer-spin-button {
 #delete-btn:hover {
   /* filter: opacity(.75); */
   background-color: var(--bg-delete);
-  color: var(--text-color);
+  color: var(--delete-hover);
 }
 
 #delete-btn::after {

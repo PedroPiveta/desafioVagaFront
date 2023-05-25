@@ -9,6 +9,9 @@ const Condutores = () => {
     const { data, error, isPending } = useFetchGet('https://api-deslocamento.herokuapp.com/api/v1/Condutor');
     const [formattedData, setFormattedData] = useState(null);
 
+    let color = '#6c68ff';
+
+
     useEffect(() => {
         if (data) {
             const formattedCondutors = data.reverse().map((condutor) => {
@@ -36,7 +39,7 @@ const Condutores = () => {
         <main>
             <Dialog.Root>
                 <Dialog.Trigger className="dialog-trigger" asChild>
-                    <button>Cadastrar novo condutor <Plus size={16} color='#ebf1f1' /></button>
+                    <button>Cadastrar novo condutor <Plus size={16} color={color} /></button>
                 </Dialog.Trigger>
                 <Dialog.Portal>
                     <Dialog.Overlay className='dialog-overlay' />
@@ -54,7 +57,7 @@ const Condutores = () => {
                     <Link className="link" to={`/condutores/${condutor.id}`}>
                         <div className='card'>
                             <div>nome: {condutor.nome}</div>
-                            <PencilSimple size={24} color='#ebf1f1' />
+                            <PencilSimple size={24} color={color} />
                         </div>
                     </Link>
                 </div>

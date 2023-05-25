@@ -1,37 +1,48 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { UserCircle, Truck, Package, Person } from "phosphor-react";
+import { UserCircle, Truck, Package, Person, Sun } from "phosphor-react";
+import { useState } from "react";
 
 const DashBoard = () => {
     const location = useLocation();
     const navigate = useNavigate();
+    const [isLightMode, setIsLightMode] = useState(false);
 
-    function pathMatchRoute(route){
-        if(location.pathname === route){
+    const toggleLightMode = () => {
+        setIsLightMode(!isLightMode);
+    }
+
+    let color = '#6c68ff';
+
+    function pathMatchRoute(route) {
+        if (location.pathname === route) {
             return true;
         }
     }
-    return ( 
-        <aside>
+    return (
+        <aside className={isLightMode ? 'light-mode' : ''}>
             <ul>
+                <button onClick={toggleLightMode}>
+                    <Sun size={24} color={color} />
+                </button>
                 <div className="dashboard-item" id={pathMatchRoute('/clientes') && "focus"} onClick={() => navigate('/clientes')}>
-                    <UserCircle size={48} color="#ebf1f1" />
+                    <UserCircle size={48} color={color} />
                     <li>Clientes</li>
                 </div>
                 <div className="dashboard-item" id={pathMatchRoute('/condutores') && "focus"} onClick={() => navigate('/condutores')}>
-                    <Person size={48} color="#ebf1f1" />
+                    <Person size={48} color={color} />
                     <li>Condutores</li>
                 </div>
                 <div className="dashboard-item" id={pathMatchRoute('/veiculos') && "focus"} onClick={() => navigate('/veiculos')}>
-                    <Truck size={48} color="#ebf1f1" />
+                    <Truck size={48} color={color} />
                     <li>Veiculos</li>
                 </div>
                 <div className="dashboard-item" id={pathMatchRoute('/deslocamentos') && "focus"} onClick={() => navigate('/deslocamentos')}>
-                    <Package size={48} color="#ebf1f1" />
+                    <Package size={48} color={color} />
                     <li>Deslocamentos</li>
                 </div>
             </ul>
         </aside>
-     );
+    );
 }
- 
+
 export default DashBoard;

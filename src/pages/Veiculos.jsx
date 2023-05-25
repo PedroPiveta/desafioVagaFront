@@ -6,12 +6,14 @@ import { Link } from "react-router-dom";
 
 const Veiculos = () => {
     const { data, error, isPending } = useFetchGet('https://api-deslocamento.herokuapp.com/api/v1/Veiculo');
+    
+    let color = '#6c68ff';
 
     return (
         <main>
             <Dialog.Root>
                 <Dialog.Trigger className='dialog-trigger' asChild>
-                    <button>Cadastrar novo veículo <Plus size={16} color='#ebf1f1' /></button>
+                    <button>Cadastrar novo veículo <Plus size={16} className="icon" color={color} /></button>
                 </Dialog.Trigger>
                 <Dialog.Portal>
                     <Dialog.Overlay className='dialog-overlay' />
@@ -29,7 +31,7 @@ const Veiculos = () => {
                     <Link className="link" to={`/veiculos/${veiculo.id}`}>
                         <div className="card">
                             <div className="card-title">Marca: {veiculo.marcaModelo}</div>
-                            <PencilSimple size={24} color='#ebf1f1' />
+                            <PencilSimple size={24} color={color} />
                         </div>
                     </Link>
                 </div>
