@@ -87,7 +87,7 @@ const CreateDeslocamento = () => {
                 <label htmlFor="motivo">Motivo</label>
                 <input type="text" name="motivo" id="motivo" onChange={(e) => setMotivo(e.target.value)} required />
                 <label htmlFor="observacao">Observação</label>
-                <input type="text" name="observacao" id="observacao" onChange={(e) => setObservacao(e.target.value)} required />
+                <textarea name="observacao" id="observacao" onChange={(e) => setObservacao(e.target.value)} required />
                 <input type="submit" value="Iniciar novo deslocamento" />
             </form>
         </>
