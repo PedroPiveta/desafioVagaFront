@@ -74,7 +74,7 @@ const DetalhesCliente = () => {
                         <AlertDialog.Content className="dialog-content">
                             <AlertDialog.Title className="dialog-title">Você tem certeza?</AlertDialog.Title>
                             <AlertDialog.Description className="dialog-description">
-                                <p>Todos os deslocamentos associados com o cliente {data.nome} serão apagados</p>
+                                Todos os deslocamentos associados com o cliente {data.nome} serão apagados
                             </AlertDialog.Description>
                             <div className="alert-buttons">
                                 <AlertDialog.Cancel asChild>

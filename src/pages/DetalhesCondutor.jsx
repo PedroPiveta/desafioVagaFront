@@ -20,22 +20,22 @@ const DeatlhesCondutor = () => {
         id: data?.id,
     };
 
-      useEffect(() => {
+    useEffect(() => {
         if (data) {
-          const vencimentoHabilitacao = new Date(data.vencimentoHabilitacao);
-          const options = {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          };
+            const vencimentoHabilitacao = new Date(data.vencimentoHabilitacao);
+            const options = {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+            };
 
-          const formattedDate = new Intl.DateTimeFormat("pt-BR", options).format(
-            vencimentoHabilitacao
-          );
+            const formattedDate = new Intl.DateTimeFormat("pt-BR", options).format(
+                vencimentoHabilitacao
+            );
 
-          setFormattedData(formattedDate);
+            setFormattedData(formattedDate);
         }
-      }, [data]);
+    }, [data]);
 
     const handleDelete = async () => {
         if (data) {
@@ -60,7 +60,7 @@ const DeatlhesCondutor = () => {
 
     return (
         <main className="detalhes">
-            
+
             <h1>Dados Condutor</h1>
             <div><span>Nome:</span> {data?.nome}</div>
             <div><span>Número habilitação:</span> {data?.numeroHabilitacao}</div>
@@ -92,7 +92,7 @@ const DeatlhesCondutor = () => {
                         <AlertDialog.Content className="dialog-content">
                             <AlertDialog.Title className="dialog-title">Você tem certeza?</AlertDialog.Title>
                             <AlertDialog.Description className="dialog-description">
-                                <p>Todos os deslocamentos associados com o condutor {data.nome} serão apagados</p>
+                                Todos os deslocamentos associados com o condutor {data.nome} serão apagados
                             </AlertDialog.Description>
                             <div className="alert-buttons">
                                 <AlertDialog.Cancel asChild>

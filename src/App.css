@@ -208,8 +208,15 @@ button:disabled {
 
 .alert-buttons {
   display: flex;
-  margin-top: 5em;
-  gap: 2em;
+  /* margin-top: 5em; */
+  justify-content: space-around;
+}
+
+.alert-buttons button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5em;
 }
 
 form {
