@@ -1,11 +1,28 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { UserCircle, Truck, Package, Person, Sun } from "phosphor-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const DashBoard = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const [isLightMode, setIsLightMode] = useState(false);
+
+    useEffect(() => {
+        const savedMode = localStorage.getItem("isLightMode");
+        if (savedMode) {
+            setIsLightMode(savedMode === "true");
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("isLightMode", isLightMode);
+        // Aqui você pode adicionar lógica adicional para alternar temas, como adicionar ou remover classes do body ou atualizar estilos globais
+        if (isLightMode) {
+            document.body.classList.remove("dark-mode");
+        } else {
+            document.body.classList.add("dark-mode");
+        }
+    }, [isLightMode]);
 
     const toggleLightMode = () => {
         setIsLightMode(!isLightMode);

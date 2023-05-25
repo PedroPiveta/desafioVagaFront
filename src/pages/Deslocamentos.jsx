@@ -120,7 +120,7 @@ const Deslocamentos = () => {
                         console.error(error);
                     }
                 } else {
-                    alert("Não é possível encerrar um deslocamento com data de início maior que a data de fim!");
+                    alert("Não é possível encerrar um deslocamento com data de início igual a data de fim!");
                 }
             }
         }
