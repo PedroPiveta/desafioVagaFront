@@ -14,6 +14,8 @@ const Deslocamentos = () => {
     const [formattedData, setFormattedData] = useState(null);
     const [createHandler, setCreateHandler] = useState(true);
     const [missing, setMissing] = useState('Para criar um deslocamento é necessário ter pelo menos um condutor, um veículo e um cliente cadastrados.');
+    const [kmFinal, setKmFinal] = useState(0);
+    const [observacao, setObservacao] = useState('');
 
     let color = '#6c68ff';
 
@@ -92,40 +94,32 @@ const Deslocamentos = () => {
         if (formattedData) {
             const deslocamentoToEncerrar = formattedData.find((item) => item.id === id);
             const fimDeslocamento = new Date().toISOString();
+
             if (deslocamentoToEncerrar) {
-                const encerrarData = {
-                    id: deslocamentoToEncerrar.id,
-                    kmFinal: 500,
-                    fimDeslocamento: fimDeslocamento,
-                    observacao: 'teste',
+
+                const deslocamento = {
+                    id: id,
+                    kmFinal: parseInt(kmFinal),
+                    fimDeslocamento : fimDeslocamento,
+                    observacao : observacao,
                 };
 
-                if (data.inicioDeslocamento > fimDeslocamento) {
-
-                    try {
-                        await axios.put(
-                            `https://api-deslocamento.herokuapp.com/api/v1/Deslocamento/${id}/EncerrarDeslocamento`,
-                            {
-                                headers: {
-                                    "Content-Type": "application/json",
-                                },
-                                data: encerrarData,
-                            }
-                        );
-                        alert("Deslocamento encerrado com sucesso!");
-                        window.location.reload();
-                    } catch (error) {
-                        alert("Não foi possível encerrar o deslocamento!");
-                        console.log(encerrarData)
-                        console.error(error);
-                    }
-                } else {
-                    alert("Não é possível encerrar um deslocamento com data de início igual a data de fim!");
+                try {
+                    await axios.put(
+                        `https://api-deslocamento.herokuapp.com/api/v1/Deslocamento/${id}/EncerrarDeslocamento`, deslocamento);
+                    alert("Deslocamento encerrado com sucesso!");
+                    window.location.reload();
+                } catch (error) {
+                    alert("Não foi possível encerrar o deslocamento!");
+                    console.log(formattedData)
+                    console.log(deslocamento);
+                    console.error(error);
                 }
+            } else {
+                alert("Não é possível encerrar um deslocamento com data de fim menor ou igual à data de início!");
             }
         }
     };
-
 
     return (
         <main>
@@ -159,9 +153,29 @@ const Deslocamentos = () => {
                     </div>
                     <div className="deslocamento-btn">
                         <abbr title="Clique para finalizar deslocamento">
-                            <button onClick={() => handleEncerrar(deslocamento.id)} disabled={deslocamento.fimDeslocamento ? true : false}>
-                                <Check size={24} color={color} className={deslocamento.fimDeslocamento ? 'encerrado' : ''} />
-                            </button>
+                            <Dialog.Root>
+                                <Dialog.Trigger className="dialog-trigger" asChild>
+                                    <button disabled={deslocamento.fimDeslocamento ? true : false}>
+                                        <Check size={24} color={color} className={deslocamento.fimDeslocamento ? 'encerrado' : ''} />
+                                    </button>
+                                </Dialog.Trigger>
+                                <Dialog.Portal>
+                                    <Dialog.Overlay className="dialog-overlay" />
+                                    <Dialog.Content className="dialog-content">
+                                        <form onSubmit={(e) => {
+                                            e.preventDefault();
+                                            handleEncerrar(deslocamento.id)
+                                        }}>
+                                            <Dialog.Title className="dialog-title">Finalizar deslocamento</Dialog.Title>
+                                            <label htmlFor="kmFinal">Km Final</label>
+                                            <input type="number" id="kmFinal" name="kmFinal"  onChange={(e) => setKmFinal(e.target.value)} />
+                                            <label htmlFor="observacao">Observação</label>
+                                            <input type="text" id="observacao" name="observacao"  onChange={(e) => setObservacao(e.target.value)} />
+                                            <input type="submit" />
+                                        </form>
+                                    </Dialog.Content>
+                                </Dialog.Portal>
+                            </Dialog.Root>
                         </abbr>
                         {formattedData && (<AlertDialog.Root>
                             <AlertDialog.Trigger className="dialog-trigger">

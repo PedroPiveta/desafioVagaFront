@@ -1,4 +1,5 @@
 import * as Dialog from "@radix-ui/react-dialog";
+import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useFetchGet from "../hooks/useFetchGet";
@@ -81,7 +82,29 @@ const DeatlhesCondutor = () => {
                         </Dialog.Content>
                     </Dialog.Portal>
                 </Dialog.Root>
-                <button id="delete-btn" onClick={handleDelete}>Excluir Condutor</button>
+
+                {data && (<AlertDialog.Root>
+                    <AlertDialog.Trigger id="delete-btn">
+                        <div>Excluir Condutor</div>
+                    </AlertDialog.Trigger>
+                    <AlertDialog.Portal>
+                        <AlertDialog.Overlay className="dialog-overlay" />
+                        <AlertDialog.Content className="dialog-content">
+                            <AlertDialog.Title className="dialog-title">Você tem certeza?</AlertDialog.Title>
+                            <AlertDialog.Description className="dialog-description">
+                                <p>Todos os deslocamentos associados com o condutor {data.nome} serão apagados</p>
+                            </AlertDialog.Description>
+                            <div className="alert-buttons">
+                                <AlertDialog.Cancel asChild>
+                                    <button className="Button mauve">Cancelar</button>
+                                </AlertDialog.Cancel>
+                                <AlertDialog.Action asChild>
+                                    <button id="delete-btn" onClick={() => handleDelete(data.id)}>Tudo bem, apagar condutor</button>
+                                </AlertDialog.Action>
+                            </div>
+                        </AlertDialog.Content>
+                    </AlertDialog.Portal>
+                </AlertDialog.Root>)}
             </div>
         </main>
     );

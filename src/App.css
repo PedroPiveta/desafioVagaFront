@@ -175,6 +175,12 @@ button:disabled {
   height: 100vh;
 }
 
+.dialog-description {
+  font-size: 22px;
+  font-weight: 700;
+  padding: 1.2em;
+}
+
 .dialog-content {
   display: flex;
   flex-direction: column;
@@ -270,6 +276,12 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: var(--accent-color);
 }
 
+.card button:hover {
+  background-color: var(--input-bg);
+  transition: all 250ms ease-in;
+}
+
+
 .detalhes {
   display: flex;
   flex-wrap: wrap;
@@ -297,6 +309,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .manage {
   display: flex;
 }
+
 
 #delete-btn {
   color: var(--text-delete);

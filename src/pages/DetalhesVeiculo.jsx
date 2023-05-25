@@ -1,5 +1,6 @@
 import useFetchGet from "../hooks/useFetchGet";
 import * as Dialog from '@radix-ui/react-dialog';
+import * as AlertDialog from '@radix-ui/react-alert-dialog';
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Editveiculo from "../components/EditVeiculo";
@@ -55,21 +56,29 @@ const DetalhesVeiculo = () => {
                     </Dialog.Portal>
                 </Dialog.Root>
                 
-                <button id="delete-btn" onClick={handleDelete}>Excluir Veiculo</button>
+                {data && (<AlertDialog.Root>
+                    <AlertDialog.Trigger id="delete-btn">
+                        <div>Excluir Veiculo</div>
+                    </AlertDialog.Trigger>
+                    <AlertDialog.Portal>
+                        <AlertDialog.Overlay className="dialog-overlay" />
+                        <AlertDialog.Content className="dialog-content">
+                            <AlertDialog.Title className="dialog-title">Você tem certeza?</AlertDialog.Title>
+                            <AlertDialog.Description className="dialog-description">
+                                <p>Todos os deslocamentos associados com o veiculo {data.marcaModelo} {data.anoFabricacao} serão apagados</p>
+                            </AlertDialog.Description>
+                            <div className="alert-buttons">
+                                <AlertDialog.Cancel asChild>
+                                    <button className="Button mauve">Cancelar</button>
+                                </AlertDialog.Cancel>
+                                <AlertDialog.Action asChild>
+                                    <button id="delete-btn" onClick={() => handleDelete(data.id)}>Tudo bem, apagar veiculo</button>
+                                </AlertDialog.Action>
+                            </div>
+                        </AlertDialog.Content>
+                    </AlertDialog.Portal>
+                </AlertDialog.Root>)}
             </div>
-
-            {/* <Dialog.Root>
-                <Dialog.Trigger className="dialog-trigger" asChild>
-                    <button>Excluir cliente</button>
-                </Dialog.Trigger>
-                <Dialog.Portal>
-                    <Dialog.Overlay className="dialog-overlay" />
-                    <Dialog.Content className="dialog-content">
-                        <Dialog.Title className="dialog-title">Excluir cliente</Dialog.Title>
-                        <button onClick={handleDelete}>Excluir Cliente</button>
-                    </Dialog.Content>
-                </Dialog.Portal>
-            </Dialog.Root> */}
         </main>
     );
 };
