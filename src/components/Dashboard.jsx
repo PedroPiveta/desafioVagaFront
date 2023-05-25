@@ -20,10 +20,10 @@ const DashBoard = () => {
     }
     return (
         <aside className={isLightMode ? 'light-mode' : ''}>
+            <button className="toggle" onClick={toggleLightMode}>
+                <Sun size={24} color={color} />
+            </button>
             <ul>
-                <button onClick={toggleLightMode}>
-                    <Sun size={24} color={color} />
-                </button>
                 <div className="dashboard-item" id={pathMatchRoute('/clientes') && "focus"} onClick={() => navigate('/clientes')}>
                     <UserCircle size={48} color={color} />
                     <li>Clientes</li>

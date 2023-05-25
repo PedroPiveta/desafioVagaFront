@@ -56,6 +56,10 @@ aside {
   min-height: 100vh;
 }
 
+.toggle {
+  width: 4em;
+}
+
 ul {
   margin: 0;
   padding: 0;
